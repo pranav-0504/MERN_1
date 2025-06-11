@@ -1,0 +1,47 @@
+.error-page {
+  height: 100vh;
+  background-color: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-container h1 {
+  font-size: 8rem;
+  margin: 0;
+  color: #ff4c60;
+}
+
+.error-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #bbb;
+}
+
+.btn-home {
+  display: inline-block;
+  background: linear-gradient(to right, #6c63ff, #9b5de5);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-home:hover {
+  background: linear-gradient(to right, #9b5de5, #6c63ff);
+  transform: scale(1.05);
+}
