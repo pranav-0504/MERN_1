@@ -55,11 +55,10 @@ export const Register = () => {
             //? To Make all input fields khali/Empty Again:
             if(response.ok === true){
                 setUser({username: "", email: "", phone: "",password: ""});
-                navigate("/login");
+                navigate("/login");         // login page pe chala jayega redirect
             }
 
             console.log(response);
-            
         }
         catch(error){
             console.log("Register: ", error);
@@ -124,7 +123,7 @@ export const Register = () => {
                                     <div>
                                         <label htmlFor="phone">phone</label>
                                         <input 
-                                            type="numer" 
+                                            type="number" 
                                             name="phone" 
                                             placeholder="Enter The phone"
                                             id="phone" 

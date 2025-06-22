@@ -4,7 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();                  // MAIN EXPRESS KI LIBRARY
 
-const cors = require("cors");           
+const cors = require("cors");           //! for Connecting front end and back end       
 
 const authRoute = require("./router/auth-router");
 const contactRoute = require("./router/contact-router");
@@ -14,7 +14,7 @@ const errorMiddleWare = require("./middlewares/error-middleware");
 
 //! Tackling Cors for FRONTEND REACR + BACKEND CONNECTION 
 const corsOptions = {
-    origin: "http://localhost:5173",           //? Frontend React part is Origin here!
+    origin: "http://localhost:5173",  //! Frontend React part is Origin here! yaha se data ayega to access de dena server bhai
     method: "POST, GET, DELETE, PUT, PATCH, HEAD",
     credentials: true,
 };
