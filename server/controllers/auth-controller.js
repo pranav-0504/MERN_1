@@ -56,6 +56,8 @@ const registerPage = async (req, res, next) => {
             password,   
         });
 
+        console.log("✅ User created successfully:", userCreated);      // ADD THIS
+
         res.status(200).json({
             //* User: req.body, 
             //! User: userCreated,

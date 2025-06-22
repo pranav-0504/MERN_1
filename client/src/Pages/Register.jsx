@@ -3,7 +3,6 @@ import { useState } from "react";
 import "../components/Register.css";
 import { useNavigate } from "react-router-dom";
 
-
 export const Register = () => {
     
     // // return <h1> Welcome to Register Page </h1>;
@@ -35,7 +34,7 @@ export const Register = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();             // To prevent for refreshing on clicking submit button
-        alert("Form Submitted Successfully");
+        // alert("Form Submitted Successfully"); // yeh tum pehle nhi de skte alert yeh he sb confusion ki jadd h 
 
         console.log(user);
 
@@ -52,16 +51,23 @@ export const Register = () => {
                 
             });
 
+            const data = await response.json();
+
             //? To Make all input fields khali/Empty Again:
             if(response.ok === true){
                 setUser({username: "", email: "", phone: "",password: ""});
+                alert(`Registration Succesfull for the User !`);
                 navigate("/login");         // login page pe chala jayega redirect
+            }
+            else{
+                alert(`Registration Failed: ${data.extraDetails || data.msg || "Unknown error"}`);
             }
 
             console.log(response);
         }
         catch(error){
-            console.log("Register: ", error);
+            console.log("Register error: ", error);
+            alert("Wrong Inputs");
         }
     };
 

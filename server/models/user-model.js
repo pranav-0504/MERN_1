@@ -30,6 +30,11 @@ const userSchema = new mongoose.Schema({                // ISI KO User NAAM SE E
 
 //! Hashing the Password here only: MOST IMPROTANT ***********
 userSchema.pre("save", async function(next){
+
+    //! Important For Login Form Working CHecking ID PASSWORD 
+    if(!this.isModified("password")){
+        return next();      //! skip if password is unchanged
+    }
     
     console.log("pre method", this );
 

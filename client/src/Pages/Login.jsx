@@ -2,11 +2,13 @@ import { useState } from "react";
 
 import "../components/login-form.css";
 
+import { useNavigate } from "react-router-dom"; 
+
 export const Login = () => {    
     
     // // return <h1> Welcome to Login Page </h1>;
 
-    //! Making Hooks:
+    //! Using React Hooks to Fetch the info email and password filled in the form:
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -16,7 +18,7 @@ export const Login = () => {
         console.log(e);
 
         let name = e.target.name;
-        let value = e.target.value;
+        let value = e.target.value.trim();      // to avoid leading spaces During Login
 
         setUser({
             ...user,
@@ -24,13 +26,41 @@ export const Login = () => {
         })
     };
 
-    const handleSubmit = (e) => {
+    // Handling Login form Submission
+    const handleSubmit = async (e) => {
         
         e.preventDefault();
-        // alert(user);
-        alert(`Email: ${user.email} \n Password: ${user.password}`);
 
-        console.log(user);
+        //? alert(`Email: ${user.email} \n Password: ${user.password}`);
+        console.log(user);          // printing on console
+
+        // Ab Backend se DB se data check karna h na bhai ab
+
+        try{
+            const response = await fetch(`http://localhost:5000/api/auth/login`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                }, 
+                body: JSON.stringify(user),
+            });
+
+            if(response.ok ){                           //! === true
+                // means data post ho jayega!
+                alert("Login Successful");
+                setUser({email: "", password: "" });
+                navigate("/");          // home page pe redirect ho jayega apne aap
+            }
+            else{
+                alert("Wrong Credentials");
+                console.log("Invalid Credentials, Wrong X");
+            }
+
+            // console.log(response);
+        }
+        catch(error){
+            console.log("login Error: ", error);
+        }
     }
 
     return (
@@ -101,17 +131,11 @@ export const Login = () => {
         </>
     );
 
-
-
 };
 
 
-
-
     // return (
-
     //     <>
-
     //         <section>
     //             <main>
 
@@ -135,31 +159,9 @@ export const Login = () => {
     //                             <h1>Login Form</h1>
 
     //                         </div>
-
-
-
     //                     </div>
-
-
-
-
-
-
-
-
     //                 </div>
     //             </main>
     //         </section>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     //     </>
-
     // );
