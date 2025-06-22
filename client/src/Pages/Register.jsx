@@ -52,9 +52,12 @@ export const Register = () => {
             });
 
             const data = await response.json();
-
+            
             //? To Make all input fields khali/Empty Again:
             if(response.ok === true){
+                
+                console.log("response_data: ",data);
+
                 setUser({username: "", email: "", phone: "",password: ""});
                 alert(`Registration Succesfull for the User !`);
                 navigate("/login");         // login page pe chala jayega redirect

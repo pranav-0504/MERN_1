@@ -62,7 +62,6 @@ const registerPage = async (req, res, next) => {
             //* User: req.body, 
             //! User: userCreated,
             msg: "User Registered Sucessfully",                  //? Will BE SHOW ON POSTMAN OUTPUT TERMINAL
-
             token: await userCreated.generateToken(),
             userId: userCreated._id.toString(),
         });
